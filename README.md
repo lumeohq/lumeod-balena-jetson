@@ -1,60 +1,32 @@
 # lumeod-balena-jetson
 
-Base app/image that you can install lumeod on. Work in Progress.
+Base app/image with lumeo gateway pre-installed. Experimental.
 
-1. Push to your fleet using :
+Note: This approach requires you to maintain and push a new Balena release every time Lumeo updates Gateway docker containers. 
+
+## Setup your Fleet
+First, setup the following Fleet-wide or Device variables in Balena cloud:
+```
+LUMEO_APP_ID=<your Lumeo workspace app id>
+LUMEO_API_KEY=<api key for your Lumeo workspace>
+```
+This will enable containers that you push to your fleet to automatically
+register in this workspace.
+
+
+## Push new release
+Push to your fleet using :
 
 ```
-balena push <fleet-name>
+$ balena push <fleet-name>
 ```
 
-2. Then log into the installed app container : 
+## Setup Jetson Hardware
+Finally, log into your hardware device and set max perf mode : 
 
-```
-balena ssh <device-uuid> lumeo
-```
+```.bash
+$ balena ssh <device-uuid>
 
-3. and run the lumeo installer. The installer requires manual workarounds to work at the moment.
-
+# NVP Mode 8 sets Jetson NX to 20W, 6 core (max perf).
+$ nvpmodel -m 8
 ```
-bash <(wget -qO- https://link.lumeo.com/setup)
-```
-
-- Wait for the installer to hang trying to enable docker.
-- Terminate it (Ctrl C)
-
-4. Unzip the installer and edit the install script
-
-```
-sh lumeod-0.3.6-installer-aarch64-linux.run --target ./lumeo
-```
-- Installer starts again; terminate it. 
-
-5. Edit `setup.sh` :
-- Comment out line 231 : `#systemctl enable --now docker`
-- Update lines 234-239 to : 
- ```
- docker run -dit --network=host --restart=always \
-  -e RUST_LOG=debug \
-  -e GST_DEBUG=2,webrtcbin:4 \
-  -e WEBRTCD_PIPELINE_PATH="/lumeo_bin/bin/lumeo-webrtcd-pipeline" \
-  -v "${BALENA_APP_ID}_lumeo-bin:/lumeo_bin" \
-  ${GSTREAMER_DOCKER_IMAGE} /lumeo_bin/bin/lumeo-webrtcd
- ```
-- Comment out line 254 : `#install -m u=rwx,g=rx,o=rx ./update.sh /etc/cron.hourly/lumeo-update`
-
-6. Run `setup.sh aarch64` again
-7. To set it up as a new gateway, now run :
- ```
-CONFIG=/var/lib/lumeo/lumeod.toml
-sudo lumeod provision
-sudo chown lumeod:lumeod "$CONFIG"
-```
-
-8. Start services 
-```
-service lumeod restart
-service lumeo-rtspd restart
-systemctl status lumeod
-```
-  
