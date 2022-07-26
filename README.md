@@ -21,6 +21,8 @@ Push to your fleet using :
 $ balena push <fleet-name>
 ```
 
+Once the application is running on your Balena device, it will auto register with Lumeo and appear in your Lumeo console.
+
 ## Setup Jetson Hardware
 Finally, log into your hardware device and set max perf mode : 
 
