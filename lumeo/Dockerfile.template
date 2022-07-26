@@ -1,76 +1,8 @@
-FROM balenalib/%%BALENA_MACHINE_NAME%%-ubuntu:bionic
+#FROM balenalib/%%BALENA_MACHINE_NAME%%-ubuntu:bionic
+FROM lumeo/gateway-balena-jetson-xavier-nx:latest
 
-ENV DEBIAN_FRONTEND noninteractive
-# Install both DBus and systemd support
-RUN install_packages dbus systemd wget
+# FIXME: The below doesnt seem to work within the container - but is something you'd
+# want to do to auto set Jetsons to max performance. 
+RUN echo 'ACTION=="add", SUBSYSTEMS=="usb", RUN+="/usr/sbin/nvpmodel -m 2" ' > /etc/udev/rules.d/101-nvpmodel.rules
 
-# Mask services which do not make sense to run in a service container
-RUN systemctl mask \
-    dev-hugepages.mount \
-    sys-fs-fuse-connections.mount \
-    sys-kernel-config.mount \
-    display-manager.service \
-    getty@.service \
-    systemd-logind.service \
-    systemd-remount-fs.service \
-    getty.target \
-    graphical.target
-
-# nvidia-l4t-core is a dependency for the rest
-# of the packages, and is designed to be installed directly
-# on the target device. This because it parses /proc/device-tree
-# in the deb's .preinst script. Looks like we can bypass it though:
-RUN \
-    apt-get update && \
-    apt-get install -y --no-install-recommends nvidia-l4t-core
-
-
-RUN \
-#    apt-get install --no-install-recommends -y \
-    install_packages \
-    nvidia-l4t-firmware \
-    nvidia-l4t-multimedia-utils \
-    nvidia-l4t-multimedia \
-    nvidia-l4t-cuda \
-    nvidia-l4t-x11 \
-    nvidia-l4t-camera \
-    nvidia-l4t-tools \
-    nvidia-l4t-graphics-demos \
-    nvidia-l4t-gstreamer \
-    nvidia-l4t-jetson-io \
-    nvidia-l4t-configs \
-    nvidia-l4t-3d-core \
-    nvidia-l4t-oem-config
-
-
-RUN \
-#    apt-get install --no-install-recommends -y \
-    install_packages \
-    curl \
-    docker.io \
-    gstreamer1.0-libav \
-    gstreamer1.0-plugins-bad \
-    gstreamer1.0-plugins-good \
-    gstreamer1.0-tools \
-    libgstreamer-plugins-base1.0-dev \
-    libgstreamer1.0-0 \
-    libgstrtspserver-1.0-0 \
-    libjansson4 \
-    libssl1.0.0 \
-    python3-gst-1.0 \
-    python3-numpy \
-    python3-pip \
-    python3-requests \
-    libpython3.6 \
-    nvidia-opencv
-
-RUN \
-#    apt-get install -y \
-    install_packages \
-    deepstream-6.0
-
-#RUN apt-get install wget
-
-COPY entry.sh /usr/bin
-STOPSIGNAL 37
-ENTRYPOINT ["/usr/bin/entry.sh"]
+ENTRYPOINT ["/etc/init/run.sh"]
