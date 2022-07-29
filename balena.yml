@@ -14,7 +14,7 @@ assets:
     type: blob.asset
     data:
       url: >-
-        https://assets.lumeo.com/media/logo/lumeo-icon.png
+        https://assets.lumeo.com/media/logo/lumeo-icon-512.png
 data:
   applicationEnvironmentVariables:
     - LUMEO_APP_ID: <your-app-id-from-lumeo-console>
