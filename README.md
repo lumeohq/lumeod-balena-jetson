@@ -1,6 +1,7 @@
-# lumeod-balena-jetson
+# Lumeo Gateway Balena Image
 
 Base app/image with lumeo gateway pre-installed. Experimental.
+Currently only supports Jetson Xavier NX
 
 Note: This approach requires you to maintain and push a new Balena release every time Lumeo updates Gateway docker containers. 
 
@@ -20,6 +21,10 @@ Push to your fleet using :
 ```
 $ balena push <fleet-name>
 ```
+
+or 
+
+[![balena deploy button](https://www.balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/lumeohq/lumeod-balena-jetson)
 
 Once the application is running on your Balena device, it will auto register with Lumeo and appear in your Lumeo console.
 

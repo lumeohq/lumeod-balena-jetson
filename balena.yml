@@ -1,0 +1,27 @@
+name: Lumeo Gateway
+type: sw.application
+description: >-
+  Create and deploy custom video analytics applications in minutes using Lumeo's Drag-and-drop 
+  tools, vision AI models, APIs and custom code. Design and manage from Lumeo cloud, process locally using the
+  Lumeo Gateway on Nvidia DGPUs and Jetson devices. 
+  Request an account at www.lumeo.com 
+assets:
+  repository:
+    type: blob.asset
+    data:
+      url: 'https://github.com/lumeohq/lumeod-balena-jetson'
+  logo:
+    type: blob.asset
+    data:
+      url: >-
+        https://assets.lumeo.com/media/logo/lumeo-icon.png
+data:
+  applicationEnvironmentVariables:
+    - LUMEO_APP_ID: <your-app-id-from-lumeo-console>
+    - LUMEO_API_KEY: <your-api-key-from-lumeo-console>
+  defaultDeviceType: jetson-xavier-nx-devkit
+  supportedDeviceTypes:
+    - jetson-xavier-nx-devkit
+    - jetson-xavier-nx-devkit-emmc
+    - jetson-xavier-nx-devkit-seeed-2mic-hat
+version: 0.4.13
