@@ -24,7 +24,7 @@ $ balena push <fleet-name>
 
 or 
 
-[![balena deploy button](https://www.balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/lumeohq/lumeod-balena-jetson)
+[![balena deploy button](https://www.balena.io/deploy.svg)](https://dashboard.balena-cloud.com/deploy?repoUrl=https://github.com/lumeohq/lumeod-balena-jetson&defaultDeviceType=jetson-xavier-nx-devkit)
 
 Once the application is running on your Balena device, it will auto register with Lumeo and appear in your Lumeo console.
 
