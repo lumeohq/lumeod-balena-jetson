@@ -4,7 +4,7 @@ description: >-
   Create and deploy custom video analytics applications in minutes using Lumeo's Drag-and-drop 
   tools, vision AI models, APIs and custom code. Design and manage from Lumeo cloud, process locally using the
   Lumeo Gateway on Nvidia DGPUs and Jetson devices. 
-  Request an account at www.lumeo.com 
+  Get an account at www.lumeo.com 
 assets:
   repository:
     type: blob.asset
@@ -13,8 +13,7 @@ assets:
   logo:
     type: blob.asset
     data:
-      url: >-
-        https://assets.lumeo.com/media/logo/lumeo-icon-512.png
+      url: 'https://assets.lumeo.com/media/logo/lumeo-icon-512.png'
 data:
   applicationEnvironmentVariables:
     - LUMEO_APP_ID: <your-app-id-from-lumeo-console>
@@ -24,4 +23,4 @@ data:
     - jetson-xavier-nx-devkit
     - jetson-xavier-nx-devkit-emmc
     - jetson-xavier-nx-devkit-seeed-2mic-hat
-version: 0.4.13
+version: 0.4.14
