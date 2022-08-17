@@ -3,7 +3,7 @@ volumes:
     lumeo-data:
 services:
   lumeo:
-    image: lumeo/gateway-balena-jetson-xavier-nx:0.6.4
+    image: lumeo/gateway-balena-jetson-xavier-nx:0.6.5
     network_mode: 'host'
     privileged: true
     volumes:
