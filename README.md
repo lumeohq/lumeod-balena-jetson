@@ -14,12 +14,16 @@ LUMEO_API_KEY=<api key for your Lumeo workspace>
 This will enable containers that you push to your fleet to automatically
 register in this workspace.
 
+## Prerequisite
+Install balena-cli using the following instructions:
+
+https://github.com/balena-io/balena-cli/blob/master/INSTALL.md
 
 ## Push new release
 Push to your fleet using :
 
 ```
-$ balena push <fleet-name>
+$ balena push <fleet-name>. (i.e. balena push lumeo/lumeo-prod)
 ```
 
 or
