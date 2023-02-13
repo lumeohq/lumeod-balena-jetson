@@ -19,6 +19,11 @@ Install balena-cli using the following instructions:
 
 https://github.com/balena-io/balena-cli/blob/master/INSTALL.md
 
+## Adjust Update Strategy
+Balena update strategy is specified in docker-compose.yml with the `io.balena.update.strategy` label, defaults to "delete-then-download".
+This will stop and delete the lumeo container, then download a new version. On devices with 16GB eMMC, this is required as the update image won't fit alongside the full running image. 
+To reduce download bandwidth and downtime, remove the label if primary Balena storage is >32GB.
+
 ## Push new release
 Push to your fleet using :
 
@@ -35,7 +40,7 @@ Note: When using the button above, be sure to check the "Advanced" box and set t
 Once the application is running on your Balena device, it will auto register with Lumeo and appear in your Lumeo console.
 
 ## Setup Jetson Hardware
-Finally, log into your hardware device and set max perf mode : 
+Finally, log into your hardware device (host, not the lumeo container) and set max perf mode : 
 
 ```.bash
 $ balena ssh <device-uuid>
