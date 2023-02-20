@@ -25,7 +25,7 @@ This will stop and delete the lumeo container, then download a new version. On d
 To reduce download bandwidth and downtime, remove the label if primary Balena storage is >32GB.
 
 ## Push new release
-Push to your fleet using :
+Push to the default device type of your fleet using :
 
 ```
 $ balena push <fleet-name>. (i.e. balena push lumeo/lumeo-prod)
