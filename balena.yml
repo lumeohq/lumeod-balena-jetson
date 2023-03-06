@@ -20,7 +20,8 @@ data:
     - LUMEO_API_KEY: <your-api-key-from-lumeo-console>
   defaultDeviceType: jetson-xavier-nx-devkit
   supportedDeviceTypes:
+    - jetson-agx-orin-devkit
     - jetson-xavier-nx-devkit
     - jetson-xavier-nx-devkit-emmc
     - jetson-xavier-nx-devkit-seeed-2mic-hat
-version: 1.6.23
+version: 1.7.30
