@@ -24,8 +24,5 @@ data:
     - jetson-xavier-nx-devkit
     - jetson-xavier-nx-devkit-emmc
     - jetson-xavier-nx-devkit-seeed-2mic-hat
-<<<<<<< HEAD
     - jetson-orin-nx-xavier-nx-devkit
-=======
->>>>>>> main
 version: 1.13.6
