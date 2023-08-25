@@ -1,4 +1,4 @@
-FROM lumeo/gateway-balena-jetson-xavier-nx:latest
+FROM lumeo/gateway-balena-jetson-xavier-nx:1.16.26
 
 # FIXME: The below doesnt seem to work within the container - but is something you'd
 # want to do to auto set Jetsons to max performance.
