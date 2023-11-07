@@ -1,4 +1,4 @@
-FROM lumeo/gateway-balena-jetson-orin-agx-devkit:1.20.23
+FROM lumeo/gateway-balena-jetson-orin-agx-devkit:1.21.10
 
 # FIXME: The below doesnt seem to work within the container - but is something you'd
 # want to do to auto set Jetsons to max performance.
