@@ -1,3 +1,11 @@
+# ⚠️ **The Balena support was deprecated** ⚠️
+
+Please check [in our documentation](https://docs.lumeo.com/docs/gateway) the guides to setup Lumeo Gateways for the configuration you desire - cloud, on-prem servers, or edge devices.
+
+This repository is now read-only. 
+
+---------------
+
 # Lumeo Gateway Balena Image
 
 Base app/image with lumeo gateway pre-installed. Experimental.
